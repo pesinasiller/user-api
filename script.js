@@ -18,17 +18,17 @@ const users = [
     }
 ];
 
-const user = users.find((user) => { 
-    return user.name === 'carlos'
+const user = users.find((item) => {
+    return item.name === 'carlos'
 });
 
 
 
 const server = createServer((req, res) => {
-res.writeHead(200, { 'Content-Type': 'application/json' });
-res.end({users})
-//res.writeHead(200, { 'Content-Type': 'text/plain' });
-  //res.end('Lets Code!\n');
+ res.writeHead(200, { 'Content-Type': 'application/json' });
+ res.end(JSON.stringify(user))
+ // res.writeHead(200, { 'Content-Type': 'text/plain' });
+ // res.end('Lets Code!\n');
 });
 
 // starts a simple http server locally on port 3000
