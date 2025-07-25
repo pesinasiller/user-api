@@ -18,17 +18,30 @@ const users = [
     }
 ];
 
+
+
+
+/*
 const user = users.find((item) => {
-    return item.name === 'carlos'
+    return item.name === 'mahdia'
 });
+*/
 
 
 
 const server = createServer((req, res) => {
- res.writeHead(200, { 'Content-Type': 'application/json' });
- res.end(JSON.stringify(user))
- // res.writeHead(200, { 'Content-Type': 'text/plain' });
- // res.end('Lets Code!\n');
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Or use a specific origin instead of "*"
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  
+
+  const user = Math.random() > .5  ? users[0] : users[1];
+
+
+  res.end(JSON.stringify(user))
+  // res.writeHead(200, { 'Content-Type': 'text/plain' });
+  // res.end('Lets Code!\n');
 });
 
 // starts a simple http server locally on port 3000
